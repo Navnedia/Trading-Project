@@ -35,10 +35,11 @@ public abstract class PriceFactory {
      */
     public static Price makePrice(String valueStr) throws NullArgumentException, BadArgumentException {
         if (valueStr == null) { throw new NullArgumentException("Invalid valueStr argument: null"); }
+        if (valueStr.isEmpty()) { throw new BadArgumentException("Invalid valueStr argument: empty string"); }
 
         Price priceObj = null;
         try {
-            valueStr = valueStr.replaceAll("[$,]", ""); // Strip out the dollar sign and commas.
+            valueStr = valueStr.strip().replaceAll("[$,]", ""); // Strip out the dollar sign, commas, and unnecessary spaces.
             Double.parseDouble(valueStr); // Check for proper format by parsing.
             String[] valueParts = valueStr.split("\\."); // Split into dollars and cents.
 
