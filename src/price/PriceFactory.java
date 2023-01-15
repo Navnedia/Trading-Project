@@ -37,7 +37,6 @@ public abstract class PriceFactory {
         if (valueStr == null) { throw new NullArgumentException("Invalid valueStr argument: null"); }
         if (valueStr.isEmpty()) { throw new BadArgumentException("Invalid valueStr argument: empty string"); }
 
-        Price priceObj = null;
         try {
             valueStr = valueStr.strip().replaceAll("[$,]", ""); // Strip out the dollar sign, commas, and unnecessary spaces.
             Double.parseDouble(valueStr); // Check for proper format by parsing.
@@ -66,11 +65,9 @@ public abstract class PriceFactory {
                 }
             }
 
-            priceObj = new Price((dollars * 100) + cents); // Create a Price with the dollars and cents combined.
+            return new Price((dollars * 100) + cents); // Create a Price with the dollars and cents combined.
         } catch (NumberFormatException e) {
-            throw new BadArgumentException("Invalid valueStr argument: " + e.getMessage());
+            throw new BadArgumentException("Invalid valueStr argument '" + valueStr +"': " + e.getMessage());
         }
-
-        return priceObj;
     }
 }
