@@ -6,29 +6,20 @@ import java.util.Objects;
 
 public class Price implements Comparable<Price> {
 
-    private int value; // Price value stored in cents.
+    private final int value; // Price value stored in cents.
 
     /**
      * Constructs a Price object with the specified value.
      * @param value an integer representing the price value in cents.
      */
     Price(int value) {
-        setValue(value);
+        this.value = value;
     }
 
     /**
      * @return the value of this Price object in cents.
      */
-    public int getValue() {
-        return this.value;
-    }
-
-    /**
-     * @param value an integer representing the price value in cents.
-     */
-    private void setValue(int value) {
-        this.value = value;
-    }
+    public int getValue() { return value; }
 
     /**
      * @return true if this Price value is negative, false if positive or zero.
@@ -178,7 +169,5 @@ public class Price implements Comparable<Price> {
      * @return an integer hash code value for this Price object.
      */
     @Override
-    public int hashCode() {
-        return Objects.hash(value);
-    }
+    public int hashCode() { return Objects.hash(value); }
 }
