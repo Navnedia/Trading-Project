@@ -1,7 +1,6 @@
 import price.Price;
 import price.PriceFactory;
-import exceptions.BadArgumentException;
-import exceptions.NullArgumentException;
+import exceptions.InvalidPriceOperation;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +9,6 @@ import java.util.List;
 public class Main {
 
     // Testing Helper Methods:
-
     public static List<Price> priceList(int[] values) {
         List<Price> prices = new ArrayList<>();
         for (int val : values) {
@@ -24,7 +22,7 @@ public class Main {
             try {
                 Price p = PriceFactory.makePrice(val);
                 System.out.println("Input: " + val + " | Coins: " + p.getValue() + " | Print: " + p);
-            } catch (NullArgumentException | BadArgumentException e) {
+            } catch (InvalidPriceOperation e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -38,11 +36,11 @@ public class Main {
             System.out.println(p.greaterThan(pOther));
             System.out.println(p.lessOrEqual(pOther));
             System.out.println(p.greaterOrEqual(pOther));
-        } catch (NullArgumentException e) {
+        } catch (InvalidPriceOperation e) {
+            System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
     }
-
 
     public static void main(String[] args) {
         System.out.println("--- Test valid strings ---");
@@ -83,7 +81,8 @@ public class Main {
             System.out.println(p + " + " + pLarger + " = " + p.add(pLarger));
             System.out.println(p + " - " + pLarger + " = " + p.subtract(pLarger));
             System.out.println(p + " * 2 = " + p.multiply(2));
-        } catch (NullArgumentException e) {
+        } catch (InvalidPriceOperation e) {
+            System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
 
