@@ -1,6 +1,6 @@
 package price;
 
-import exceptions.InvalidPriceOperation;
+import exceptions.NullArgumentException;
 
 import java.util.Objects;
 
@@ -32,10 +32,10 @@ public class Price implements Comparable<Price> {
      * @param p a Price object to add.
      * @return a new Price object holding the sum of the current price plus the price object
      * passed in.
-     * @throws InvalidPriceOperation if the price argument is null.
+     * @throws NullArgumentException if the price argument is null.
      */
-    public Price add(Price p) throws InvalidPriceOperation {
-        if (p == null) { throw new InvalidPriceOperation("Invalid price argument: null"); }
+    public Price add(Price p) throws NullArgumentException {
+        if (p == null) { throw new NullArgumentException("Invalid price argument: null"); }
         return new Price(value + p.value);
     }
 
@@ -43,10 +43,10 @@ public class Price implements Comparable<Price> {
      * @param p a Price object to subtract.
      * @return a new Price object holding the difference between the current price
      * minus the price object passed in.
-     * @throws InvalidPriceOperation if the price argument is null.
+     * @throws NullArgumentException if the price argument is null.
      */
-    public Price subtract(Price p) throws InvalidPriceOperation {
-        if (p == null) { throw new InvalidPriceOperation("Invalid price argument: null"); }
+    public Price subtract(Price p) throws NullArgumentException {
+        if (p == null) { throw new NullArgumentException("Invalid price argument: null"); }
         return new Price(value - p.value);
     }
 
@@ -63,10 +63,10 @@ public class Price implements Comparable<Price> {
      * @param p a Price object to test against.
      * @return true if the current Price object is greater than or equal to the
      * Price object passed in.
-     * @throws InvalidPriceOperation if the price argument is null.
+     * @throws NullArgumentException if the price argument is null.
      */
-    public boolean greaterOrEqual(Price p) throws InvalidPriceOperation {
-        if (p == null) { throw new InvalidPriceOperation("Invalid price argument: null"); }
+    public boolean greaterOrEqual(Price p) throws NullArgumentException {
+        if (p == null) { throw new NullArgumentException("Invalid price argument: null"); }
         return (value - p.value) >= 0;
     }
 
@@ -74,10 +74,10 @@ public class Price implements Comparable<Price> {
      * @param p a Price object to test against.
      * @return true if the current Price object is less than or equal to the Price
      * object passed in.
-     * @throws InvalidPriceOperation if the price argument is null.
+     * @throws NullArgumentException if the price argument is null.
      */
-    public boolean lessOrEqual(Price p) throws InvalidPriceOperation {
-        if (p == null) { throw new InvalidPriceOperation("Invalid price argument: null"); }
+    public boolean lessOrEqual(Price p) throws NullArgumentException {
+        if (p == null) { throw new NullArgumentException("Invalid price argument: null"); }
         return (value - p.value) <= 0;
     }
 
@@ -85,10 +85,10 @@ public class Price implements Comparable<Price> {
      * @param p a Price object to test against.
      * @return true if the current Price object is greater than the Price object
      * passed in.
-     * @throws InvalidPriceOperation if the price argument is null.
+     * @throws NullArgumentException if the price argument is null.
      */
-    public boolean greaterThan(Price p) throws InvalidPriceOperation {
-        if (p == null) { throw new InvalidPriceOperation("Invalid price argument: null"); }
+    public boolean greaterThan(Price p) throws NullArgumentException {
+        if (p == null) { throw new NullArgumentException("Invalid price argument: null"); }
         return (value - p.value) > 0;
     }
 
@@ -96,10 +96,10 @@ public class Price implements Comparable<Price> {
      * @param p a Price object to test against.
      * @return true if the current Price object is less than the Price object passed
      * in.
-     * @throws InvalidPriceOperation if the price argument is null.
+     * @throws NullArgumentException if the price argument is null.
      */
-    public boolean lessThan(Price p) throws InvalidPriceOperation {
-        if (p == null) { throw new InvalidPriceOperation("Invalid price argument: null"); }
+    public boolean lessThan(Price p) throws NullArgumentException {
+        if (p == null) { throw new NullArgumentException("Invalid price argument: null"); }
         return (value - p.value) < 0;
     }
 

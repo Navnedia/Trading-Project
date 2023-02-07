@@ -1,6 +1,7 @@
 package price;
 
-import exceptions.InvalidPriceOperation;
+import exceptions.InvalidArgumentException;
+import exceptions.NullArgumentException;
 
 /** A factory class for creating Price objects.*/
 public abstract class PriceFactory {
@@ -30,11 +31,12 @@ public abstract class PriceFactory {
      *
      * @param valueStr a string price representation.
      * @return a new Price object for the specified value.
-     * @throws InvalidPriceOperation if the value string is null, empty, or invalid.
+     * @throws NullArgumentException if the value string is null.
+     * @throws InvalidArgumentException if the value string is empty, or not a valid number value.
      */
-    public static Price makePrice(String valueStr) throws InvalidPriceOperation {
-        if (valueStr == null) { throw new InvalidPriceOperation("Invalid valueStr argument: null"); }
-        if (valueStr.isEmpty()) { throw new InvalidPriceOperation("Invalid valueStr argument: empty string"); }
+    public static Price makePrice(String valueStr) throws NullArgumentException, InvalidArgumentException {
+        if (valueStr == null) { throw new NullArgumentException("Invalid valueStr argument: null"); }
+        if (valueStr.isEmpty()) { throw new InvalidArgumentException("Invalid valueStr argument: empty string"); }
 
         try {
             valueStr = valueStr.strip().replaceAll("[$,]", ""); // Strip out the dollar sign, commas, and unnecessary spaces.
@@ -66,7 +68,7 @@ public abstract class PriceFactory {
 
             return new Price((dollars * 100) + cents); // Create a Price with the dollars and cents combined.
         } catch (NumberFormatException e) {
-            throw new InvalidPriceOperation("Invalid valueStr argument '" + valueStr +"': " + e.getMessage());
+            throw new InvalidArgumentException("Invalid valueStr argument '" + valueStr +"': " + e.getMessage());
         }
     }
 }
