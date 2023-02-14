@@ -6,20 +6,20 @@ import java.util.Objects;
 
 public class Price implements Comparable<Price> {
 
-    private final int value; // Price value stored in cents.
+    private final long value; // Price value stored in cents.
 
     /**
      * Constructs a Price object with the specified value.
-     * @param value an integer representing the price value in cents.
+     * @param value a long representing the price value in cents.
      */
-    Price(int value) {
+    Price(long value) {
         this.value = value;
     }
 
     /**
      * @return the value of this Price object in cents.
      */
-    public int getValue() { return value; }
+    public long getValue() { return value; }
 
     /**
      * @return true if this Price value is negative, false if positive or zero.
@@ -51,11 +51,11 @@ public class Price implements Comparable<Price> {
     }
 
     /**
-     * @param n an integer value to multiply the price by.
+     * @param n a long/integer number value to multiply the price by.
      * @return a new Price object holding the product of the current price and the
-     * integer value passed in.
+     * number value passed in.
      */
-    public Price multiply(int n) {
+    public Price multiply(long n) {
         return new Price(value * n);
     }
 
@@ -112,19 +112,19 @@ public class Price implements Comparable<Price> {
     @Override
     public int compareTo(Price p) throws NullPointerException {
         if (p == null) { throw new NullPointerException("Invalid price argument: null"); }
-        return value - p.value;
+        return (int) (value - p.value);
     }
 
     /**
-     * A static method for formatting a cents integer to a price string
+     * A static method for formatting a cents long to a price string
      * representation.
      *
-     * @param value an integer representing the price value in cents.
+     * @param value a long representing the price value in cents.
      * @return a string representation of the price value (ex: "$12.34").
      */
-    public static String toString(int value) {
+    public static String toString(long value) {
         // Put the value in a StringBuilder without the minus sign.
-        StringBuilder out = new StringBuilder(Integer.toString(value).replace("-", ""));
+        StringBuilder out = new StringBuilder(Long.toString(value).replace("-", ""));
         // Format the numbers differently based on how many digits they have:
         if (out.length() >= 3) { // Separate the dollars and cents with a decimal.
             out.insert(out.length() - 2, ".");
@@ -139,7 +139,7 @@ public class Price implements Comparable<Price> {
 
     /**
      *  Formats the price into a money string representation, exactly as if the cents value
-     *  were given to the static {@link price.Price#toString(int)} method.
+     *  were given to the static {@link price.Price#toString(long)} method.
      *
      * @return a string representation of the price value (ex: "$12.34").
      */

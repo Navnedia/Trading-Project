@@ -22,9 +22,9 @@ public class Main {
     }
 
     // Testing Helper Methods:
-    public static List<Price> priceList(int[] values) {
+    public static List<Price> priceList(long[] values) {
         List<Price> prices = new ArrayList<>();
-        for (int val : values) {
+        for (long val : values) {
             prices.add(PriceFactory.makePrice(val));
         }
         return prices;
@@ -69,14 +69,14 @@ public class Main {
         testStrings(fails);
 
         System.out.println("\n--- Test valid integers ---");
-        int[] intTests = {-1, 0, 1, 20, 300, 4000, 50000};
-        for (int test : intTests) {
+        long[] intTests = {-1, 0, 1, 20, 300, 4000, 50000};
+        for (long test : intTests) {
             Price price = PriceFactory.makePrice(test);
             System.out.println(price.getValue() + " = " + price);
         }
 
         System.out.println("\n--- Test sort Price list ---");
-        List<Price> prices = priceList(new int[]{100, -54, 5432, -999, 101, 100, 1234, 5, 0, 99,  -1234, -8});
+        List<Price> prices = priceList(new long[]{100, -54, 5432, -999, 101, 100, 1234, 5, 0, 99,  -1234, -8});
         Collections.sort(prices);
         System.out.println(prices);
 

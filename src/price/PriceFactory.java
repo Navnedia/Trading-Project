@@ -9,10 +9,10 @@ public abstract class PriceFactory {
     /**
      * A Factory method to construct a Price object.
      *
-     * @param value an integer representing the price value in cents.
+     * @param value a long/integer number representing the price value in cents.
      * @return a new Price object for the specified cents value.
      */
-    public static Price makePrice(int value) { return new Price(value); }
+    public static Price makePrice(long value) { return new Price(value); }
 
     /**
      * A Factory method that converts a string representation to construct a Price object; accepts a range of
@@ -43,13 +43,13 @@ public abstract class PriceFactory {
             Double.parseDouble(valueStr); // Check for proper format by parsing.
             String[] valueParts = valueStr.split("\\."); // Split into dollars and cents.
 
-            int dollars = 0;
+            long dollars = 0;
             // Process cents: Don't try to parse if it's blank or just a negative sign.
             if (valueParts[0].length() != 0 && !valueParts[0].equals("-")) {
-                dollars = Integer.parseInt(valueParts[0]);
+                dollars = Long.parseLong(valueParts[0]);
             }
 
-            int cents = 0;
+            long cents = 0;
             // Process cents: Don't try to parse if it's blank.
             if (valueParts.length == 2 && valueParts[1].length() != 0) {
                 String centsStr = valueParts[1];
@@ -59,7 +59,7 @@ public abstract class PriceFactory {
                     centsStr += "0";
                 }
 
-                cents = Integer.parseInt(centsStr); // Parse cents to integer.
+                cents = Long.parseLong(centsStr); // Parse cents to a long.
                 if (valueStr.startsWith("-")) {
                     // If the number is negative then make cents negative so that math works.
                     cents = -cents;
