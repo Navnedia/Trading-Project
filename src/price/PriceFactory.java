@@ -3,8 +3,15 @@ package price;
 import exceptions.InvalidArgumentException;
 import exceptions.NullArgumentException;
 
+import java.util.HashMap;
+
 /** A factory class for creating Price objects.*/
 public abstract class PriceFactory {
+
+    /**
+     * Track the previously created Price objects mapped to their value to implement the flyweight pattern.
+     */
+    private static final HashMap<Long, Price> createdPrices = new HashMap<Long, Price>();
 
     /**
      * A Factory method to construct a Price object.
@@ -12,7 +19,17 @@ public abstract class PriceFactory {
      * @param value a long/integer number representing the price value in cents.
      * @return a new Price object for the specified cents value.
      */
-    public static Price makePrice(long value) { return new Price(value); }
+    public static Price makePrice(long value) {
+        // Uses the flyweight pattern to avoid creating multiple Price objects for the same value:
+        Price price = createdPrices.get(value); // Get the Price obj for the given value from the map.
+        if (price == null) {
+            // If the object doesn't exist, then create a new Price and add it to the map for later.
+            price = new Price(value);
+            createdPrices.put(value, price);
+        }
+
+        return price;
+    }
 
     /**
      * A Factory method that converts a string representation to construct a Price object; accepts a range of
@@ -66,7 +83,7 @@ public abstract class PriceFactory {
                 }
             }
 
-            return new Price((dollars * 100) + cents); // Create a Price with the dollars and cents combined.
+            return makePrice((dollars * 100) + cents); // Create a Price with the dollars and cents combined.
         } catch (NumberFormatException e) {
             throw new InvalidArgumentException("Invalid valueStr argument '" + valueStr +"': " + e.getMessage());
         }
