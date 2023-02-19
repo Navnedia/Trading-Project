@@ -3,8 +3,6 @@ package book;
 import tradable.Order;
 import tradable.OrderDTO;
 import price.Price;
-import book.BookSide;
-import book.ProductBookSide;
 
 import exceptions.InvalidArgumentException;
 import exceptions.InvalidRangeException;
