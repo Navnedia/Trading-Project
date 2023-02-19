@@ -121,9 +121,8 @@ public class ProductBookSide {
     public String toString() {
         ArrayList<Price> prices = getOrderedPrices();
         StringBuilder out = new StringBuilder("Side: " + side);
-        if (prices.size() == 0) { // If this book side contains no entries, then use empty as a placeholder.
-            return out.append("\n\t<Empty>").toString();
-        }
+        // If this book side contains no entries, then use empty as a placeholder.
+        if (prices.size() == 0) { return out.append("\n\t<Empty>").toString(); }
         // Format each price and the entries:
         for (Price price: prices) {
             out.append("\n\tPrice: ").append(price);

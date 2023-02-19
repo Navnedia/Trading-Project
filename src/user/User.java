@@ -47,11 +47,13 @@ public class User {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("User Id: ").append(userId); // Add User Id header.
+        StringBuilder out = new StringBuilder("User Id: ").append(userId); // Add User Id header.
+        // If there are no orders, then use empty placeholder.
+        if (orders.size() == 0) { return out.append("\n\t<Empty>").toString(); }
         for (OrderDTO dto : orders.values()) { // Add all order summaries.
-            sb.append("\n\t").append(dto);
+            out.append("\n\t").append(dto);
         }
 
-        return sb.append("\n\n").toString();
+        return out.toString();
     }
 }
