@@ -21,7 +21,7 @@ public class Order {
     private int filledVolume = 0;
     private int cancelledVolume = 0;
 
-    Order(String user, String product, BookSide side, Price price, int volume) throws NullArgumentException, InvalidRangeException, InvalidArgumentException {
+    public Order(String user, String product, BookSide side, Price price, int volume) throws NullArgumentException, InvalidRangeException, InvalidArgumentException {
         setUser(user);
         setProduct(product);
         setSide(side);

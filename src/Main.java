@@ -1,10 +1,9 @@
+import tradable.Order;
 import tradable.OrderDTO;
-import tradable.OrderFactory;
 import price.Price;
 import price.PriceFactory;
 
 import productbook.ProductBook;
-import productbook.ProductBookFactory;
 import productbookside.BookSide;
 import exceptions.TradingApplicationException;
 import exceptions.InvalidArgumentException;
@@ -115,43 +114,43 @@ public class Main {
         // Test ProductBook Functionality:
         // Obviously it would be more ideal to read in tests from a file, but this seemed quicker for this sake :)
         try {
-            ProductBook book = ProductBookFactory.makeBook("AMZN");
+            ProductBook book = new ProductBook("AMZN");
 
             // 1)
-            book.add(OrderFactory.makeOrder("AAA", "AMZN", BookSide.BUY, PriceFactory.makePrice(1000), 50));
+            book.add(new Order("AAA", "AMZN", BookSide.BUY, PriceFactory.makePrice(1000), 50));
             System.out.println(book);
             // 2)
-            book.add(OrderFactory.makeOrder("BBB", "AMZN", BookSide.BUY, PriceFactory.makePrice(1000), 60));
+            book.add(new Order("BBB", "AMZN", BookSide.BUY, PriceFactory.makePrice(1000), 60));
             System.out.println(book);
             // 3)
-            book.add(OrderFactory.makeOrder("CCC", "AMZN", BookSide.BUY, PriceFactory.makePrice(995), 70));
+            book.add(new Order("CCC", "AMZN", BookSide.BUY, PriceFactory.makePrice(995), 70));
             System.out.println(book);
             // 4)
-            book.add(OrderFactory.makeOrder("DDD", "AMZN", BookSide.BUY, PriceFactory.makePrice(990), 25));
+            book.add(new Order("DDD", "AMZN", BookSide.BUY, PriceFactory.makePrice(990), 25));
             System.out.println(book);
             // 5)
-            book.add(OrderFactory.makeOrder("EEE", "AMZN", BookSide.SELL, PriceFactory.makePrice(1010), 120));
+            book.add(new Order("EEE", "AMZN", BookSide.SELL, PriceFactory.makePrice(1010), 120));
             System.out.println(book);
             // 6)
-            OrderDTO cancel = book.add(OrderFactory.makeOrder("FFF", "AMZN", BookSide.SELL, PriceFactory.makePrice(1020), 45));
+            OrderDTO cancel = book.add(new Order("FFF", "AMZN", BookSide.SELL, PriceFactory.makePrice(1020), 45));
             System.out.println(book);
             // 7)
-            book.add(OrderFactory.makeOrder("GGG", "AMZN", BookSide.SELL, PriceFactory.makePrice(1025), 90));
+            book.add(new Order("GGG", "AMZN", BookSide.SELL, PriceFactory.makePrice(1025), 90));
             System.out.println(book);
             // 8)
-            book.add(OrderFactory.makeOrder("HHH", "AMZN", BookSide.SELL, PriceFactory.makePrice(1000), 200));
+            book.add(new Order("HHH", "AMZN", BookSide.SELL, PriceFactory.makePrice(1000), 200));
             System.out.println(book);
             // 9)
-            book.add(OrderFactory.makeOrder("III", "AMZN", BookSide.BUY, PriceFactory.makePrice(1010), 200));
+            book.add(new Order("III", "AMZN", BookSide.BUY, PriceFactory.makePrice(1010), 200));
             System.out.println(book);
             // 10)
             book.cancel(BookSide.SELL, cancel.id);
             System.out.println(book);
             // 11)
-            book.add(OrderFactory.makeOrder("JJJ", "AMZN", BookSide.SELL, PriceFactory.makePrice(990), 95));
+            book.add(new Order("JJJ", "AMZN", BookSide.SELL, PriceFactory.makePrice(990), 95));
             System.out.println(book);
             // 12)
-            book.add(OrderFactory.makeOrder("KKK", "AMZN", BookSide.BUY, PriceFactory.makePrice(1025), 100));
+            book.add(new Order("KKK", "AMZN", BookSide.BUY, PriceFactory.makePrice(1025), 100));
             System.out.println(book);
         } catch (TradingApplicationException e) {
             System.out.println(e.getMessage());

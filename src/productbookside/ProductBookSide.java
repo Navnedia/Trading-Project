@@ -16,7 +16,7 @@ public class ProductBookSide {
     private BookSide side;
     private final HashMap<Price, ArrayList<Order>> bookEntries;
 
-    ProductBookSide(BookSide side) throws NullArgumentException {
+    public ProductBookSide(BookSide side) throws NullArgumentException {
         setSide(side);
         bookEntries = new HashMap<>();
     }

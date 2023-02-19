@@ -5,7 +5,6 @@ import tradable.OrderDTO;
 import price.Price;
 import productbookside.BookSide;
 import productbookside.ProductBookSide;
-import productbookside.ProductBookSideFactory;
 
 import exceptions.InvalidArgumentException;
 import exceptions.InvalidRangeException;
@@ -17,10 +16,10 @@ public class ProductBook {
     private ProductBookSide buySide;
     private ProductBookSide sellSide;
 
-    ProductBook(String product) throws NullArgumentException, InvalidArgumentException {
+    public ProductBook(String product) throws NullArgumentException, InvalidArgumentException {
         setProduct(product);
-        buySide = ProductBookSideFactory.makeSide(BookSide.BUY);
-        sellSide = ProductBookSideFactory.makeSide(BookSide.SELL);
+        buySide = new ProductBookSide(BookSide.BUY);
+        sellSide = new ProductBookSide(BookSide.SELL);
     }
 
   private void setProduct(String product) throws NullArgumentException, InvalidArgumentException {
