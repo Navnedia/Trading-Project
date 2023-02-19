@@ -2,7 +2,7 @@ package tradable;
 
 import price.Price;
 import price.PriceFactory;
-import productbookside.BookSide;
+import book.BookSide;
 
 import exceptions.InvalidArgumentException;
 import exceptions.InvalidRangeException;

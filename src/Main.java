@@ -3,8 +3,8 @@ import tradable.OrderDTO;
 import price.Price;
 import price.PriceFactory;
 
-import productbook.ProductBook;
-import productbookside.BookSide;
+import book.ProductBook;
+import book.BookSide;
 import exceptions.TradingApplicationException;
 import exceptions.InvalidArgumentException;
 import exceptions.NullArgumentException;

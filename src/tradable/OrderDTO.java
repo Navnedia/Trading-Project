@@ -1,7 +1,7 @@
 package tradable;
 
 import price.Price;
-import productbookside.BookSide;
+import book.BookSide;
 
 public class OrderDTO {
 
