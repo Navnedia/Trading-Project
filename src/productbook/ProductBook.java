@@ -1,7 +1,7 @@
 package productbook;
 
-import order.Order;
-import order.OrderDTO;
+import tradable.Order;
+import tradable.OrderDTO;
 import price.Price;
 import productbookside.BookSide;
 import productbookside.ProductBookSide;

@@ -1,8 +1,8 @@
 package productbookside;
 
 import exceptions.InvalidArgumentException;
-import order.Order;
-import order.OrderDTO;
+import tradable.Order;
+import tradable.OrderDTO;
 import price.Price;
 import exceptions.InvalidRangeException;
 import exceptions.NullArgumentException;

@@ -1,6 +1,6 @@
 package user;
 
-import order.OrderDTO;
+import tradable.OrderDTO;
 import exceptions.InvalidArgumentException;
 import exceptions.NullArgumentException;
 
