@@ -103,11 +103,11 @@ public class ProductBookSide {
                 currentOrder.setFilledVolume(currentOrder.getFilledVolume() + orderRemainingVol);
                 currentOrder.setRemainingVolume(0);
                 tradeVolume -= orderRemainingVol;
-                System.out.println("FILL: (" + side + " " + orderRemainingVol + ") " + currentOrder);
+                System.out.println("\tFILL: (" + side + " " + orderRemainingVol + ") " + currentOrder);
             } else { // If the requested volume is less than the order, we will just do a partial fill.
                 currentOrder.setFilledVolume(currentOrder.getFilledVolume() + tradeVolume);
                 currentOrder.setRemainingVolume(orderRemainingVol - tradeVolume);
-                System.out.println("PARTIAL FILL: (" + side + " " + tradeVolume + ") " + currentOrder);
+                System.out.println("\tPARTIAL FILL: (" + side + " " + tradeVolume + ") " + currentOrder);
                 tradeVolume = 0;
             }
         }

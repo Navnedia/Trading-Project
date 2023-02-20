@@ -68,6 +68,6 @@ public class ProductBook {
 
     @Override
     public String toString() {
-        return "Product: " + product + "\n" + buySide + "\n" + sellSide + "\n";
+        return "Product: " + product + "\n" + buySide + "\n" + sellSide;
     }
 }
