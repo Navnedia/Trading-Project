@@ -39,7 +39,7 @@ public class ProductBookSide {
 
     public OrderDTO cancel(String orderId) throws NullArgumentException, InvalidRangeException {
         if (orderId == null) { throw new NullArgumentException("Invalid orderId argument: null"); }
-        OrderDTO dto = null;
+
         // Search for an order with the given id under each price:
         for (Price price : bookEntries.keySet()) {
             for (Order order : bookEntries.get(price)) {
@@ -48,17 +48,17 @@ public class ProductBookSide {
                     // Cancel the remaining volume and zero out:
                     order.setCancelledVolume(order.getRemainingVolume());
                     order.setRemainingVolume(0);
-                    dto = order.makeTradableDTO();
+                    OrderDTO dto = order.makeTradableDTO();
                     // Clean up, remove the price entry if it's empty:
                     if (bookEntries.get(price).size() == 0) {
                         bookEntries.remove(price);
                     }
-                    break;
+                    return dto;
                 }
             }
         }
 
-        return dto;
+        return null;
     }
 
     private ArrayList<Price> getOrderedPrices() {
