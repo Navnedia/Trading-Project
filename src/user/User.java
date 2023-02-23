@@ -9,7 +9,8 @@ import java.util.HashMap;
 public class User {
 
     private String userId;
-    private final HashMap<String, OrderDTO> orders; // Store orders mapping the order ID to the OrderDTO.
+    /** Store orders mapping the order ID to the OrderDTO. */
+    private final HashMap<String, OrderDTO> orders;
 
     public User(String id) throws NullArgumentException, InvalidArgumentException {
         setUserId(id);

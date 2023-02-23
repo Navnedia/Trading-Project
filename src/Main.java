@@ -1,3 +1,4 @@
+import simulation.TrafficSim;
 import tradable.Order;
 import tradable.OrderDTO;
 import price.Price;
@@ -16,8 +17,9 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+        TrafficSim.runSim();
 //        testPrice();
-        testProductBook();
+//        testProductBook();
     }
 
     // Testing Helper Methods:
