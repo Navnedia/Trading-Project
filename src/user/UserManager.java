@@ -10,7 +10,7 @@ import java.util.HashMap;
 public final class UserManager {
 
     /** Singleton class instance. */
-    private static volatile UserManager instance;
+    private static UserManager instance;
     /** Store Users mapping the user ID to the User. */
     private final HashMap<String, User> users;
 

@@ -12,7 +12,7 @@ import java.util.HashMap;
 public final class ProductManager {
 
     /** Singleton class instance. */
-    private static volatile ProductManager instance;
+    private static ProductManager instance;
     /** Store books mapping the product symbol to the ProductBook.*/
     private final HashMap<String, ProductBook> productBooks;
 
