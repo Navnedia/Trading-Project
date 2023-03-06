@@ -31,6 +31,11 @@ public final class UserManager {
         }
     }
 
+    public User getUser(String id) throws NullArgumentException {
+        if (id == null) { throw new NullArgumentException("Invalid user id argument: null"); }
+        return users.get(id);
+    }
+
     public User getRandomUser() throws InvalidOperationException {
         if (this.users.size() == 0) { throw new InvalidOperationException("UserManager is empty with no users to return"); }
         User[] users = this.users.values().toArray(new User[0]); // Get all the users in an array.
