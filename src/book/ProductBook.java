@@ -1,5 +1,6 @@
 package book;
 
+import tracking.CurrentMarketTracker;
 import tradable.Order;
 import tradable.OrderDTO;
 import price.Price;
@@ -38,6 +39,7 @@ public class ProductBook {
         }
 
         tryTrade(); // Attempt to trade to see if we have new valid trades.
+        updateMarket(); // Report current market after changes.
         return dto;
     }
 
@@ -49,6 +51,7 @@ public class ProductBook {
             case SELL -> dto = sellSide.cancel(orderId);
         }
 
+        updateMarket(); // Report current market after changes.
         return dto;
     }
 
@@ -64,6 +67,13 @@ public class ProductBook {
             topBuy = buySide.topOfBookPrice();
             topSell = sellSide.topOfBookPrice();
         }
+    }
+
+    private void updateMarket() throws NullArgumentException {
+        // Report the current top market prices and volumes for this product book symbol.
+        CurrentMarketTracker.getInstance().updateMarket(product,
+                buySide.topOfBookPrice(), buySide.topOfBookVolume(),
+                sellSide.topOfBookPrice(), sellSide.topOfBookVolume());
     }
 
     @Override
