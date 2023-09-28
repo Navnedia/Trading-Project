@@ -1,2 +1,2 @@
 # Trading-Project
-A simple Trading Project using Object Oriented Programing Principals. Built for SE350
+This projects is built using OOP Principals and design patterns.
